@@ -1,0 +1,43 @@
+package distrito;
+
+public class Distrito {
+    private int id;
+    private String nombre;
+    private double latitud;
+    private double longitud;
+    private int listado;
+    private int votantes;
+
+    public Distrito(int id, String nombre, double latitud, double longitud, int listado, int votantes) {
+        this.id = id;
+        this.nombre = nombre;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.listado = listado;
+        this.votantes = votantes;
+    }
+
+    public double porcentajeParticipacion() {
+        return (double) votantes / listado * 100;
+    }
+
+    public double porcentajeAbstinencia() {
+        return (double) (listado - votantes) / listado * 100;
+    }
+
+    public int faltantes() {
+        return listado - votantes;
+    }
+
+    public static void main(String[] args) {
+        Distrito distrito = new Distrito(1, "Distrito 01", 19.8445901, 90.5350973, 7000, 600);
+        
+        double porcentajeParticipacion = distrito.porcentajeParticipacion();
+        double porcentajeAbstinencia = distrito.porcentajeAbstinencia();
+        int faltantes = distrito.faltantes();
+        
+        System.out.println("Porcentaje de participación: " + porcentajeParticipacion + "%");
+        System.out.println("Porcentaje de abstinencia: " + porcentajeAbstinencia + "%");
+        System.out.println("Faltantes: " + faltantes);
+    }
+}
